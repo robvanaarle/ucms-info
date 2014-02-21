@@ -1,0 +1,11 @@
+<h3><?php echo $this->escape($this->infoitem['title']) ?></h3>
+<?php echo $this->escape($this->infoitem['body']) ?>
+
+<?php if ($this->authorizer()->isAllowed('infoitem.update')): ?>
+  <br /><a href="<?php echo $this->url(array('action' => 'update', 'controller' => 'infoitem', 'id' => $this->infoitem['id']))?>">update</a>
+<?php endif ?>
+  
+<?php if ($this->authorizer()->isAllowed('infoitem.delete')): ?>
+  <br /><a href="<?php echo $this->url(array('action' => 'delete', 'controller' => 'infoitem', 'id' => $this->infoitem['id']))?>">delete</a>
+<?php endif ?>
+

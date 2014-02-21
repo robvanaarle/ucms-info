@@ -1,0 +1,26 @@
+<h3><?php echo $this->escape($this->category['name']) ?></h3>
+<?php if ($this->authorizer()->isAllowed('category.update')): ?>
+  <a href="<?php echo $this->url(array('action' => 'update', 'controller' => 'category', 'id' => $this->category['id']))?>">update category</a>
+<?php endif ?>
+  
+<?php if ($this->authorizer()->isAllowed('category.delete')): ?>
+  <br /><a href="<?php echo $this->url(array('action' => 'delete', 'controller' => 'category', 'id' => $this->category['id']))?>">delete category</a>
+<?php endif ?>
+
+<h4>Infoitems:</h4>
+<ul>
+<?php foreach ($this->category['infoitems'] as $infoitem): ?>
+  <li><a href="<?php echo $this->url(array('controller' => 'infoitem', 'action' => 'read', 'id' => $infoitem['id']))?>"><?php echo $this->escape($infoitem['title']) ?></a>
+  <?php if ($this->authorizer()->isAllowed('category.update')): ?>
+    (<a href="<?php echo $this->url(array('action' => 'move', 'controller' => 'infoitem', 'id' => $infoitem['id'], 'count' => -1))?>">up</a> |
+    <a href="<?php echo $this->url(array('action' => 'move', 'controller' => 'infoitem', 'id' => $infoitem['id'], 'count' => 1))?>">down</a>
+    )
+  <?php endif ?>
+  </li>
+<?php endforeach; ?>
+</ul>
+
+<?php if ($this->authorizer()->isAllowed('infoitem.create')): ?>
+  <a href="<?php echo $this->url(array('action' => 'create', 'controller' => 'infoitem', 'form[category_id]' => $this->category['id']))?>">create infoitem</a>
+<?php endif ?>
+<br /><a href="<?php echo $this->url(array('action' => 'index')) ?>">show all categories</a>

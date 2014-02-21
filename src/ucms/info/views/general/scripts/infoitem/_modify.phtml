@@ -1,0 +1,39 @@
+<form method="post" action="<?php echo $this->url(array('action' => $this->action))?>">
+  
+  <input type="hidden" name="id" value="<?php echo $this->id ?>" />
+  
+  <dl>
+    <dt><label for="category_id">Category</label></dt>
+    <dd>
+      <?php echo $this->error($this->form, 'category_id')?>
+      <?php echo $this->widget('Select', array(
+        'id' => 'category_id',
+        'name' => 'form[category_id]',
+        'value' => $this->form['category_id'],
+        'options' => $this->categories
+      )) ?>
+    </dd>
+  </dl>
+  
+  <dl>
+    <dt><label for="title">Title</label></dt>
+    <dd>
+      <?php echo $this->error($this->form, 'title')?>
+      <input type="text" name="form[title]" id="title" value="<?php echo $this->escape($this->form['title'])?>" />
+    </dd>
+  </dl>
+  
+  <dl>
+    <dt><label for="body">Body</label></dt>
+    <dd>
+      <?php echo $this->error($this->form, 'body')?>
+      <textarea name="form[body]" id="body"><?php echo $this->escape($this->form['body'])?></textarea>
+    </dd>
+  </dl>
+  
+  <dl>
+    <dd>
+      <input type="submit" value="<?php echo $this->action?>" />
+    </dd>
+  </dl>
+</form>

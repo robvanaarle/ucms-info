@@ -1,0 +1,12 @@
+<h3>All Categories</h3>
+
+
+<ul>
+<?php foreach ($this->categories as $category): ?>
+  <li><a href="<?php echo $this->url(array('action' => 'read', 'id' => $category['id'])) ?>" /><?php echo $this->escape($category['name']) ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php if ($this->authorizer()->isAllowed('category.create')): ?>
+  <br /><a href="<?php echo $this->url(array('action' => 'create', 'controller' => 'category'))?>">create category</a>
+<?php endif ?>

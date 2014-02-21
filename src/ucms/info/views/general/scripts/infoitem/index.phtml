@@ -1,0 +1,10 @@
+<h3>All InfoItems</h3>
+<ul>
+<?php foreach ($this->infoitems as $infoitem): ?>
+  <li><a href="<?php echo $this->url(array('action' => 'read', 'id' => $infoitem['id'])) ?>" /><?php echo $this->escape($infoitem['title']) ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php if ($this->authorizer()->isAllowed('infoitem.create')): ?>
+  <br /><a href="<?php echo $this->url(array('action' => 'create', 'controller' => 'infoitem'))?>">create</a>
+<?php endif ?>
